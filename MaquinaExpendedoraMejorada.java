@@ -91,7 +91,7 @@ public class MaquinaExpendedoraMejorada {
         int totalAVaciar;
         if (balanceClienteActual>0) {
             System.out.println("No es posible, operación en curso");
-            return -1;
+            totalAVaciar = -1;
         }
         else{
             totalAVaciar = totalDineroAcumulado;
