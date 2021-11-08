@@ -11,18 +11,21 @@ public class MaquinaExpendedoraMejorada {
     // El destino del billete
     private String estacionDestino;
     private int numeroBilletesVendidos;
-    
+    private boolean recompensa;
+        
        /**
      * Crea una maquina expendedora de billetes de tren con el 
      * precio del billete y el origen y destino dados. Se asume que el precio
      * del billete que se recibe es mayor que 0.
      */
-    public MaquinaExpendedoraMejorada(int precioDelBillete, String origen, String destino) {
+    public MaquinaExpendedoraMejorada(int precioDelBillete, String origen, String destino, boolean premio) {
         precioBillete = precioDelBillete;
         balanceClienteActual = 0;
         totalDineroAcumulado = 0;
+        numeroBilletesVendidos = 0;
         estacionOrigen = origen;
         estacionDestino = destino;
+        recompensa = premio;
     }
 
     /**
@@ -57,7 +60,12 @@ public class MaquinaExpendedoraMejorada {
     public void imprimirBillete() {
         int cantidadDeDineroQueFalta;
         cantidadDeDineroQueFalta = precioBillete - balanceClienteActual;
-        if (cantidadDeDineroQueFalta <= 0) {        
+        if (recompensa == true) {
+            double descuentoBillete;
+            descuentoBillete = (0.10 * precioBillete);
+            System.out.println("tiene un descuento de " + descuentoBillete + " para compras en X comercio");
+            }
+        if  (cantidadDeDineroQueFalta <= 0) {        
             // Simula la impresion de un billete
             System.out.println("##################");
             System.out.println("# Billete de tren:");
