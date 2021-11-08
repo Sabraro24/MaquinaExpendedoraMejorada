@@ -12,19 +12,21 @@ public class MaquinaExpendedoraMejorada {
     private String estacionDestino;
     private int numeroBilletesVendidos;
     private boolean recompensa;
+    private int numeroBilletesMaximos;
         
        /**
      * Crea una maquina expendedora de billetes de tren con el 
      * precio del billete y el origen y destino dados. Se asume que el precio
      * del billete que se recibe es mayor que 0.
      */
-    public MaquinaExpendedoraMejorada(int precioDelBillete, String origen, String destino, boolean premio) {
+    public MaquinaExpendedoraMejorada(int precioDelBillete, String origen, String destino, boolean premio,int billetesMaximos) {
         precioBillete = precioDelBillete;
         balanceClienteActual = 0;
         totalDineroAcumulado = 0;
         numeroBilletesVendidos = 0;
         estacionOrigen = origen;
         estacionDestino = destino;
+        numeroBilletesMaximos = billetesMaximos;
         recompensa = premio;
     }
 
@@ -46,11 +48,16 @@ public class MaquinaExpendedoraMejorada {
      * Simula la introduccion de dinero por parte del cliente actual
      */
     public void introducirDinero(int cantidadIntroducida) {
-        if (cantidadIntroducida > 0) {
-            balanceClienteActual = balanceClienteActual + cantidadIntroducida;
+        if (numeroBilletesVendidos == numeroBilletesMaximos) {
+            System.out.println("Todos los billetes vendidos");
         }
         else {
+            if (cantidadIntroducida > 0) {
+            balanceClienteActual = balanceClienteActual + cantidadIntroducida;
+            }
+            else {
             System.out.println(cantidadIntroducida + " no es una cantidad de dinero valida.");
+            }
         }        
     }
     
@@ -75,9 +82,9 @@ public class MaquinaExpendedoraMejorada {
             // Reduce el balance del cliente actual dejandole seguir utilizando la maquina
             balanceClienteActual = balanceClienteActual - precioBillete;
             if (recompensa == true) {
-            double descuentoBillete;
-            descuentoBillete = (0.10 * precioBillete);
-            System.out.println("tiene un descuento de " + descuentoBillete + " para compras en X comercio");
+                double descuentoBillete;
+                descuentoBillete = (0.10 * precioBillete);
+                System.out.println("tiene un descuento de " + descuentoBillete + " para compras en X comercio");
             }
         }
         else {
