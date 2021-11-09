@@ -29,6 +29,7 @@ public class MaquinaExpendedoraMejorada {
         estacionDestino = destino;
         numeroBilletesMaximos = billetesMaximos;
         recompensa = premio;
+        numeroBilletesPremio = 0;
     }
 
     /**
@@ -89,10 +90,10 @@ public class MaquinaExpendedoraMejorada {
                 balanceClienteActual = balanceClienteActual - precioBillete;
                 if (recompensa == true) {
                     if (numeroBilletesPremio / 3 != 0) {
-                    double descuentoBillete;
-                    descuentoBillete = (0.10 * precioBillete);
-                    System.out.println("tiene un descuento de " + descuentoBillete + " para compras en X comercio");
-                    numeroBilletesPremio = 0;
+                        double descuentoBillete;
+                        descuentoBillete = (0.10 * precioBillete);
+                        System.out.println("tiene un descuento de " + descuentoBillete + " para compras en X comercio");
+                        numeroBilletesPremio = 0;
                     }
                 }
             }
